@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"> 
+<head>
+    <title>Confirmation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="detaulsnew.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+         @media screen and (max-width: 768px){
+            .card6{
+                background-image: url(images1/black.jpg);
+            }
+            .card2{
+                background-image: url(images1/display.webp);
+                position: relative;
+                top: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class = "content flex_space">
+            <div class = "logo">
+                <img src = "images1/logonew.png">
+            </div>
+            <h1><span>Buy</span> Tickets</h1>
+            <div class="icon">
+            <button class ="primary-btn">Login</button>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="home">
+    <div class="book">
+        <div class="container flex-space">
+        <div class ="text">
+            <p><img src="images1/right icon.png">  Your selection --------------------------------------- <img src="images1/right icon.png"> Your details --------------------------------------- <img src="images1/right icon.png"> Your payment --------------------------------------- <img src="images1/Eo_circle_green_number-4.svg.png"> Final step </p>
+            <h1>Summary of <span>Your</span> Order</h1>
+        </div>
+        </div>
+    </div>
+
+    <div class="card2">
+        <h2>Your Results</h2>
+        <table class="summaryTable">
+            <tr class="tuk"><th>Date :</th>
+                <td id="selectedDate"></td>
+            </tr>
+            <tr class="tuk"><th>Time :</th>
+                <td id="selectedTime"></td>
+            </tr>
+            <tr class="tuk"><th>Duration :</th>
+                 <td id="selectedHours"></td>
+            </tr>
+            <tr><th>----------</th><td>-----------</td><td>-----------</td><td></td></tr>
+            <tr class="selectedTic"><th>Tickets</th><th>Quantity</th><th>Price</th></tr>
+            <tr><th>-----------</th><td>-----------</td><td>-----------</td><td></td></tr>
+            <tr class="tet"><td id="selectedTickets"></td><td id="selectedCount"></td><td id="selectedPrice"></td></tr><br>
+            <tr></tr><t<tr></tr><tr></tr><tr></tr>
+            <tr><th class="totalPay">Total :</th><td id="totalPay" class="totalPay"></td>
+                
+        </table>
+    </div>
+    <div class="card3"></div>
+    <div class="card4"></div>
+            
+ 
+    <div class="card6">
+        <h2>Thank you for your order. Your order has been confirmed with us. You can show this confirmation at the entrance. Following is the summary of your order</h2>
+        <table>
+            <tr><th>Name  </th>
+            <td id="selectedName"></td>
+            </tr>
+            <tr><th>Email</th>
+            <td id="selectedEmail"></td>
+            </tr>
+            <tr><th>Phone Number</th>
+            <td id="selectedPhone"></td>
+            </tr>
+            <tr><th>Gender</th>
+            <td id="selectedGender"></td>
+            </tr>
+        </table>
+        <div class="finish">Hikkaduwa Turtle Hatchery</div>
+    </div>
+
+        <div class="card7"></div>
+        <div class="card8"></div>
+    </section>
+
+    <script>
+        const selectedDate = localStorage.getItem('selectedDate');
+        document.getElementById('selectedDate').innerHTML = selectedDate;
+
+        const lastTime = localStorage.getItem('lastTime');
+        document.getElementById('selectedTime').innerHTML = lastTime;
+
+        const hoursCount = localStorage.getItem('hoursCount');
+        const peakCount = localStorage.getItem('peakCount');
+        const normalCount = localStorage.getItem('normalCount');
+        document.getElementById('selectedHours').innerHTML += `${hoursCount} Hours   ${peakCount} Peak   ${normalCount}  Normal`;
+
+        const totalPay = localStorage.getItem('totalCost');
+        document.getElementById('totalPay').innerHTML = `$ ${totalPay}.00`;
+
+        const firstName = localStorage.getItem('firstname');
+        const lastName = localStorage.getItem('lastname');
+        document.getElementById('selectedName').innerHTML = `${firstName} ${lastName}`;
+
+        const selectedEmail = localStorage.getItem('email');
+        document.getElementById('selectedEmail').innerHTML = selectedEmail;
+
+        const selectedPhone = localStorage.getItem('phone');
+        document.getElementById('selectedPhone').innerHTML = selectedPhone;
+
+        const selectedGender = localStorage.getItem("gender");
+        document.getElementById('selectedGender').innerHTML = selectedGender;
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+        let productsInCart = JSON.parse(localStorage.getItem('productsInCart'));
+        let selectedTickets = document.getElementById('selectedTickets');
+        let selectedCount = document.getElementById('selectedCount');
+        let selectedPrice = document.getElementById('selectedPrice');
+
+        let peakCount = localStorage.getItem('peakCount');
+        let normalCount = localStorage.getItem('normalCount');
+
+        for(let index in productsInCart) {
+            let item = productsInCart[index];
+            selectedTickets.innerHTML += `${item.name} <br><br>`;
+            selectedCount.innerHTML += `${item.inCart} <br><br>`;
+            selectedPrice.innerHTML += `$ ${item.price}.00 <br><br>`;
+        }
+
+        });
+    </script>
+    </body>
+    </html>
